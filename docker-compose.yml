@@ -1,0 +1,30 @@
+version: '3'
+services:   
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: user
+      MYSQL_DATABASE: myapp-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      
+    volumes: 
+      - ./init:/docker-entrypoint-initdb.d
+    ports: 
+      - "3306:3306"
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports: 
+      - "8080:8080"
+
+  web:
+    build: .
+    ports:
+     - "30002:5000"
+  
+  redis:
+    image: "redis:alpine"

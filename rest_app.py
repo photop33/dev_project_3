@@ -3,12 +3,12 @@ from db_connector import insert, select, update, delete
 import os
 import signal
 
-
 app = Flask(__name__)
 
-# supported methods
+
+# Supported methods
 @app.route('/users/<user_id>', methods=['GET', 'POST', 'DELETE', 'PUT'])
-def user(user_id):
+def users(user_id):
     if request.method == 'POST':
         try:
             # getting the json data payload from request
@@ -48,10 +48,20 @@ def user(user_id):
             print(e)
             return {'status': 'error', 'reason': 'no such id'}, 500
 
+
+# Stop the server with http request
 @app.route('/stop_server')
 def stop_server():
     os.kill(os.getpid(), signal.CTRL_C_EVENT)
     return 'Server stopped'
 
 
-app.run(host='127.0.0.1', debug=True, port=5000)
+# Home page
+@app.route('/')
+def home():
+    return 'Welcome to the flask server within docker, you can go to "/users/user_id" to search a user in database.'
+
+
+if __name__ == '__main__':
+    os.makedirs("logs", exist_ok=True)
+    app.run(host='0.0.0.0', debug=True, port=5000)
