@@ -49,6 +49,11 @@ stages {
             bat 'python docker_backend_testing'
         }
     }
+    stage('clean docker environment') {
+        steps {
+            bat 'docker-compose down --rmi all'
+        }
+    }
  }
  post {
         always {
