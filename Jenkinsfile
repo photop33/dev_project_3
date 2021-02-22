@@ -5,7 +5,7 @@ stages {
         steps {
             /* bat 'git.exe reset --hard' */
             /* bat 'git.exe rev-parse --verify HEAD' */
-            bat 'git.exe clean -fdx'
+            bat 'git.exe clean -ffdx'
             bat 'git clone https://github.com/isaacTadela/dev_project_3'
         }
     }
@@ -23,7 +23,7 @@ stages {
     stage('clean environment') {
         steps {
             bat 'python clean_environment.py'
-            bat 'git clean -fdx'
+            bat 'git.exe clean -ffdx'
             /* bat 'del /f/q/s *.*' */
         }
     }
