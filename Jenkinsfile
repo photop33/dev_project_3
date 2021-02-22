@@ -3,7 +3,8 @@ agent any
 stages {
     stage('pull from git') {
         steps {
-            bat 'git clean -fdx'
+            bat 'git.exe reset --hard'
+            bat 'git.exe clean -fdx'
             bat 'git clone https://github.com/isaacTadela/dev_project_3'
         }
     }
