@@ -20,8 +20,8 @@ stages {
     }
     stage('clean environment') {
         steps {
-            bat 'git clean -fdx'
             bat 'python clean_environment.py'
+            bat 'git clean -fdx'
             /* bat 'del /f/q/s *.*' */
         }
     }
