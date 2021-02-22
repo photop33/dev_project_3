@@ -3,6 +3,7 @@ agent any
 stages {
     stage('pull from git') {
         steps {
+            bat 'cd ..'
             bat 'del /f /q /s dev_project_3'
             bat 'git clone https://github.com/isaacTadela/dev_project_3'
         }
