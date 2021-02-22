@@ -59,7 +59,8 @@ def stop_server():
 # Home page
 @app.route('/')
 def home():
-    return 'Welcome to the flask server within docker, you can go to "/users/user_id" to search a user in database.'
+    return 'Welcome to the flask server within docker, ' \
+           'you can go to "/users/user_id" to search a user in database.'
 
 
 if __name__ == '__main__':

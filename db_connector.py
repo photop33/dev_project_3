@@ -11,7 +11,7 @@ def insert(user_id, user_name):
         conn.autocommit(True)
         # Getting a cursor from Database
         cursor = conn.cursor()
-        print("insert - ",cursor)
+        print("insert - ", cursor)
         cursor.execute(f"INSERT into myapp-db.users (user_id, user_name, creation_date) VALUES ({user_id},'{user_name}', CURRENT_TIMESTAMP);")
 
         cursor.close()
@@ -30,7 +30,7 @@ def select(user_id):
         conn.autocommit(True)
         # Getting a cursor from Database
         cursor = conn.cursor()
-        print("select - ",cursor)
+        print("select - ", cursor)
         cursor.execute(f"SELECT * FROM myapp-db.users WHERE user_id = '{user_id}';")
         data = cursor.fetchall()
         user_name = data[0]['user_name']
@@ -51,7 +51,7 @@ def update(user_id, user_name):
         conn.autocommit(True)
         # Getting a cursor from Database
         cursor = conn.cursor()
-        print("update - ",cursor)
+        print("update - ", cursor)
         cursor.execute(f"UPDATE myapp-db.users SET user_name = {user_name} WHERE user_id = '{user_id}';")
 
         cursor.close()
@@ -70,7 +70,7 @@ def delete(user_id):
         conn.autocommit(True)
         # Getting a cursor from Database
         cursor = conn.cursor()
-        print("delete - ",cursor)
+        print("delete - ", cursor)
         cursor.execute(f"DELETE FROM myapp-db.users WHERE user_id = {user_id};")
 
         cursor.close()
