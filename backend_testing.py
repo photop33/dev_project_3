@@ -6,10 +6,10 @@ id = 923999
 user_name = "my Name"
 
 try:
-    res = requests.post(f'http://127.0.0.1:5000/users/{id}', json={"user_name": f'{user_name}'})
+    res = requests.post(f'http://0.0.0.0:5000/users/{id}', json={"user_name": f'{user_name}'})
     print("post -", res.json())
 
-    res = requests.get(f'http://127.0.0.1:5000/users/{id}')
+    res = requests.get(f'http://0.0.0.0:5000/users/{id}')
     print("get -", res.json())
 
     host, port, user, passwd, db = 'remotemysql.com', 3306, '9hkyb0ebUg', 'Q9XsNQ9fQw', '9hkyb0ebUg'
