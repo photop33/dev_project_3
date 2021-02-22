@@ -24,7 +24,7 @@ stages {
     }
     stage('build image') {
         steps {
-            bat 'docker build -t "proj_3" .'
+            bat 'docker build -t "iitzhakk/dev_proj_3" .'
         }
     }
     stage('push image') {
@@ -39,14 +39,9 @@ stages {
             bat 'docker-compose up -d'
         }
     }
-    stage('wait for docker-compose') {
-        steps {
-            bat ' '
-        }
-    }
     stage('testing docker-compose') {
         steps {
-            bat 'python docker_backend_testing'
+            bat 'python docker_backend_testing.py'
         }
     }
     stage('clean docker environment') {
