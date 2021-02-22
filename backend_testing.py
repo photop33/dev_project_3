@@ -6,9 +6,6 @@ id = 923999
 user_name = "my Name"
 
 try:
-    res = requests.post(f'http://127.0.0.1:5000/', json={"user_name": f'{user_name}'})
-    print("post -", res.json())
-
     res = requests.post(f'http://127.0.0.1:5000/users/{id}', json={"user_name": f'{user_name}'})
     print("post -", res.json())
 
