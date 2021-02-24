@@ -41,11 +41,11 @@ stages {
     }
     stage('docker-compose up') {
         steps {
-            bat 'echo IMAGE_TAG=${BUILD_NUMBER} > .env'
-            bat 'echo ${BUILD_NUMBER}'
-			bat 'echo ${env.BUILD_NUMBER}'
-			bat 'echo $BUILD_NUMBER'
-			bat 'echo ${env.BUILD_ID}'
+			echo IMAGE_TAG="${BUILD_NUMBER}" > .env
+            echo "${BUILD_NUMBER}"
+			echo "${env.BUILD_NUMBER}"
+			echo "$BUILD_NUMBER"
+			echo "${env.BUILD_ID}"
 			
 			/* need to wait for the DB to be ready */
 			timeout(time: 240, unit: 'SECONDS'){
