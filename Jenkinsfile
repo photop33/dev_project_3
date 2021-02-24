@@ -45,7 +45,7 @@ stages {
 			echo "${env.BUILD_NUMBER}"
 			echo "$BUILD_NUMBER"
 			echo "${env.BUILD_ID}"
-			bat 'echo IMAGE_TAG=${BUILD_NUMBER} > .env'
+			bat "echo IMAGE_TAG = ${env.BUILD_NUMBER} > .env"
 			
 			/* need to wait for the DB to be ready */
 			timeout(time: 240, unit: 'SECONDS'){
