@@ -42,7 +42,7 @@ stages {
     stage('docker-compose up') {
         steps {
 			bat 'echo IMAGE_TAG=${BUILD_NUMBER} > .env'
-            echo "${BUILD_NUMBER}"
+            echo "${BUILD_NUMBER}" > .env
 			echo "${env.BUILD_NUMBER}"
 			echo "$BUILD_NUMBER"
 			echo "${env.BUILD_ID}"
