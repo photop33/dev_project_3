@@ -17,8 +17,9 @@ stages {
     }
     stage('testing backend') {
         steps {
-			timeout(time: 30, unit: 'SECONDS')
-			bat 'python backend_testing.py'
+			timeout(time: 30, unit: 'SECONDS'){
+				bat 'python backend_testing.py'
+			}
         }
     }
     stage('clean environment') {
