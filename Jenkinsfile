@@ -17,6 +17,7 @@ stages {
     }
     stage('testing backend') {
         steps {
+			bat 'sleep(30)'
             bat 'python backend_testing.py'
         }
     }
