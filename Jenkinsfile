@@ -11,15 +11,14 @@ stages {
     }
     stage('rest app') {
         steps {
-            bat 'pip install -r requirements.txt'
+            /* bat 'pip install -r requirements.txt' */
             bat 'start /min python rest_app.py'
         }
     }
     stage('testing backend') {
         steps {
-			timeout(time: 30, unit: 'SECONDS'){
-				bat 'python backend_testing.py'
-			}
+			timeout(time: 30, unit: 'SECONDS')
+			bat 'python backend_testing.py'
         }
     }
     stage('clean environment') {
@@ -47,7 +46,7 @@ stages {
 			bat 'echo IMAGE_TAG=$BUILD_NUMBER'
 			bat 'docker-compose up -d'
 			/* need to wait for the DB to be ready */
-			bat 'sleep(240)'
+			timeout(time: 240, unit: 'SECONDS')
         }
     }
     stage('testing docker-compose') {
