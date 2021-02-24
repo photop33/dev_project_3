@@ -45,9 +45,11 @@ stages {
             bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
 			bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}'
 			bat 'echo IMAGE_TAG=$BUILD_NUMBER'
-			bat 'docker-compose up -d'
+			
 			/* need to wait for the DB to be ready */
-			timeout(time: 240, unit: 'SECONDS')
+			timeout(time: 240, unit: 'SECONDS'){
+				bat 'docker-compose up -d'
+			}
         }
     }
     stage('testing docker-compose') {
