@@ -1,24 +1,31 @@
 version: '3'
+
 services:   
-  mysql:
-    image: mysql:${IMAGE_TAG}
-    command: --default-authentication-plugin=mysql_native_password
+  mysql-db:
+    image: mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: user
-      MYSQL_DATABASE: myapp-db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
-      
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes: 
       - ./init:/docker-entrypoint-initdb.d
     ports: 
-      - "30002:3306"
-
+      - "5001:3306"
+    networks:
+      - mynetwork
+      
   web:
     build: .
     ports:
-     - "30001:5000"
-  
-  redis:
-    image: "redis:alpine"
+      - "5000:5000"
+    depends_on:
+      - "mysql-db"
+    networks:
+      - mynetwork
+      
+networks: 
+  mynetwork:

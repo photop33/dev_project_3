@@ -1,5 +1,9 @@
 pipeline {
 agent any
+environment {
+        VERSION = "${env.BUILD_ID}"
+        IMAGE    = "${NAME}:${VERSION}"
+    }
 stages {
     stage('pull from git') {
         steps {
@@ -34,13 +38,13 @@ stages {
     }
     stage('push image') {
         steps {
-            bat 'docker push iitzhakk/dev_proj_3'
+            bat 'docker push -q iitzhakk/dev_proj_3'
         }
     }
     stage('docker-compose up') {
         steps {
-            bat 'echo IMAGE_TAG=${BUILD_NUMBER} > .env'
-            bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
+            bat 'echo IMAGE_TAG=${VERSION} > .env'
+            bat 'echo IMAGE_TAG=${VERSION}'
             bat 'docker-compose up -d'
         }
     }
