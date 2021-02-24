@@ -41,7 +41,6 @@ stages {
     }
     stage('docker-compose up') {
         steps {
-			def IMAGE_TAG = "${BUILD_NUMBER}" > .env
             echo "${BUILD_NUMBER}"
 			echo "${env.BUILD_NUMBER}"
 			echo "$BUILD_NUMBER"
