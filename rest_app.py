@@ -61,6 +61,4 @@ def stop_server():
 def home():
     return 'Welcome to the flask server within docker, ' \
            'you can go to "/users/user_id" to search a user in database.'
-
-
 app.run(host='0.0.0.0', debug=True, port=5000)

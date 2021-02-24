@@ -1,9 +1,5 @@
 pipeline {
 agent any
-environment {
-        VERSION = "${env.BUILD_ID}"
-        IMAGE    = "${NAME}:${VERSION}"
-    }
 stages {
     stage('pull from git') {
         steps {
@@ -43,9 +39,13 @@ stages {
     }
     stage('docker-compose up') {
         steps {
-            bat 'echo IMAGE_TAG=${VERSION} > .env'
-            bat 'echo IMAGE_TAG=${VERSION}'
-            bat 'docker-compose up -d'
+            bat 'echo IMAGE_TAG=${BUILD_NUMBER} > .env'
+            bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
+			bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}'
+			bat 'echo IMAGE_TAG=$BUILD_NUMBER'
+			bat 'docker-compose up -d'
+			/* need to wait for the DB to be ready */
+			bat 'sleep(240)'
         }
     }
     stage('testing docker-compose') {

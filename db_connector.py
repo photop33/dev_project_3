@@ -1,7 +1,7 @@
 import pymysql
 
 # host, port, user, passwd, db = 'remotemysql.com', 3306, '9hkyb0ebUg', 'Q9XsNQ9fQw', '9hkyb0ebUg'
-host, port, user, passwd, db = 'mysql-db', 3306, 'user', 'user', 'db'
+host, port, user, passwd, db = 'mysql-db', 3306, 'user', 'password', 'db'
 
 def insert(user_id, user_name):
     try:
