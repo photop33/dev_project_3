@@ -17,7 +17,7 @@ stages {
     }
     stage('testing backend') {
         steps {
-			timeout(time: 120, unit: 'SECONDS'){
+			timeout(time: 150, unit: 'SECONDS'){
 				bat 'python backend_testing.py'
 			}
         }
