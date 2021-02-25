@@ -34,12 +34,12 @@ stages {
     }
     stage('push image') {
         steps {
+			bat "echo IMAGE_TAG=${env.BUILD_NUMBER} > .env"
             bat 'docker push -q iitzhakk/dev_proj_3'
         }
     }
     stage('docker-compose up') {
         steps {
-			bat "echo IMAGE_TAG=${env.BUILD_NUMBER} > .env"
 			/* need to wait for the DB to be ready */
 			timeout(time: 240, unit: 'SECONDS'){
 				bat 'docker-compose up -d'
