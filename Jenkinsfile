@@ -17,7 +17,7 @@ stages {
     }
     stage('testing backend') {
         steps {
-			timeout(time: 150, unit: 'SECONDS'){
+			timeout(time: 180, unit: 'SECONDS'){
 				bat 'python backend_testing.py'
 			}
         }
@@ -35,7 +35,7 @@ stages {
     stage('push image') {
         steps {
 			bat "echo IMAGE_TAG=${env.BUILD_NUMBER}> .env"
-			bat "echo IMAGE_TAG=${env.BUILD_NUMBER}"
+			bat "more .env"
             bat "docker push -q iitzhakk/dev_proj_3"
         }
     }
