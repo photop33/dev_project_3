@@ -17,7 +17,7 @@ services:
       
   web:
     build: .
-    image: "dev_proj_3:${IMAGE_TAG}"
+    image: dev_proj_3
     ports:
       - "5000:5000"
     depends_on:
