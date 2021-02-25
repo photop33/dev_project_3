@@ -24,4 +24,5 @@ try:
     user_name = data[0]['user_name']
     print("DB -", user_name)
 except Exception as e:
-    raise Exception("test failed")
+    print("test failed",elif)
+    raise Exception(e)
