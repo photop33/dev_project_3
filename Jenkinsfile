@@ -60,7 +60,7 @@ stages {
  post {
         always {
             echo 'One way or another, I have finished'
-            /* deleteDir() /* clean up our workspace */
+			bat 'git.exe clean -ffdx' /* clean up our workspace */
         }
         success {
             echo 'I succeeded!'
