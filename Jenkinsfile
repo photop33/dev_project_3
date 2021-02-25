@@ -25,8 +25,6 @@ stages {
     stage('clean environment') {
         steps {
             bat 'python clean_environment.py'
-            bat 'git.exe clean -ffdx'
-            /* bat 'del /f/q/s *.*' */
         }
     }
     stage('build image') {
