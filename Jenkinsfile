@@ -41,7 +41,7 @@ stages {
     stage('docker-compose up') {
         steps {
 			/* need to wait for the DB to be ready */
-			timeout(time: 240, unit: 'SECONDS'){
+			timeout(time: 270, unit: 'SECONDS'){
 				bat 'docker-compose up -d'
 			}
         }
