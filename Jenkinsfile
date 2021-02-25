@@ -29,7 +29,7 @@ stages {
     }
     stage('build image') {
         steps {
-            bat 'docker build -t iitzhakk/dev_proj_3:${env.BUILD_NUMBER} .'
+            bat 'docker build -t iitzhakk/dev_proj_3 .'
         }
     }
     stage('push image') {
