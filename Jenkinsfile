@@ -29,13 +29,13 @@ stages {
     }
     stage('build image') {
         steps {
-            bat 'docker build -t "iitzhakk/dev_proj_3" .'
+            bat 'docker build -t iitzhakk/dev_proj_3:${env.BUILD_NUMBER} .'
         }
     }
     stage('push image') {
         steps {
 			bat "echo IMAGE_TAG=${env.BUILD_NUMBER} > .env"
-            bat "docker push -q iitzhakk/dev_proj_3:v${env.BUILD_NUMBER}"
+            bat "docker push -q iitzhakk/dev_proj_3:${env.BUILD_NUMBER}"
         }
     }
     stage('docker-compose up') {
