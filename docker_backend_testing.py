@@ -9,4 +9,4 @@ try:
     
 except Exception as e:
     print("Testing docker_backend FAILED...")
-    print(e)
+    raise Exception(e)
