@@ -4,7 +4,7 @@ import pymysql
 
 id, user_name = 7, "dan10"
 
-host, port, sqlPort, user, passwd, db = '0.0.0.0', 5000, 3306, 'root', '123456', 'db'
+host, port, sqlPort, user, passwd, db = '127.0.0.1', 5000, 3306, 'root', '123456', 'db'
 
     
 try:
