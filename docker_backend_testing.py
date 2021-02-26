@@ -25,11 +25,11 @@ try:
     user_name = data[0]['user_name']
     print("DB response -", user_name)
 except IndexError as ie:
-    print("No such id", ie)
+    print("DB response - No such id", ie)
 except pymysql.err.IntegrityError as ie:
-    print("Duplicate entry for PRIMARY key",ie)        
+    print("DB response - Duplicate entry for PRIMARY key",ie)        
 except ( RuntimeError, pymysql.err.OperationalError ) as oe:
-    print("Can't connect to MySQL server", oe)
+    print("DB response - Can't connect to MySQL server", oe)
     raise Exception(oe)
 except Exception as e:
     print("test failed",e)
