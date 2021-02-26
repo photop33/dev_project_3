@@ -12,7 +12,9 @@ stages {
     stage('rest app') {
         steps {
             /* bat 'pip install -r requirements.txt' */
+			timeout(time: 240, unit: 'SECONDS'){
             bat 'start /min python rest_app.py'
+			}
         }
     }
     stage('testing backend') {
