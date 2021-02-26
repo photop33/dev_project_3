@@ -11,11 +11,11 @@ stages {
         steps {
             bat 'pip install -r requirements.txt'
 			bat 'start /min python rest_app.py'
-			sleep(5)
         }
     }
     stage('testing backend') {
         steps {
+			sleep(10)
 			bat 'python backend_testing.py'
         }
     }
