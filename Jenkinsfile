@@ -12,15 +12,17 @@ stages {
     stage('rest app') {
         steps {
             /* bat 'pip install -r requirements.txt' */
-			timeout(time: 240, unit: 'SECONDS'){
+			timeout(time: 1, unit: 'MINUTES'){
             bat 'start /min python rest_app.py'
 			}
         }
     }
     stage('testing backend') {
         steps {
-			timeout(time: 240, unit: 'SECONDS'){
+			timeout(time: 5, unit: 'MINUTES'){
 				bat 'python backend_testing.py'
+				bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
+				bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}'
 			}
         }
     }
@@ -36,7 +38,7 @@ stages {
     }
     stage('push image') {
         steps {
-			bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}> .env'
+			bat 'echo IMAGE_TAG=${BUILD_NUMBER}> .env'
 			bat 'more .env'
             bat 'docker push -q iitzhakk/dev_proj_3'
         }
