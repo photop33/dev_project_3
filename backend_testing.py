@@ -4,12 +4,13 @@ import pymysql
 
 id, user_name = 7, "dan10"
 
-host, port, sqlPort, user, passwd, db = '127.0.0.1', 5000, 3306, 'root', '123456', 'db'
+host, port, sqlPort, user, passwd, db = 'localhost', 5000, 3306, 'root', '123456', 'db'
 
     
 try:
     res = requests.post(f'http://{host}:{port}/users/{id}', json={"user_name": f'{user_name}'})
     print("post response -", res.json())
+    print("host",host)
 
     res = requests.get(f'http://{host}:{port}/users/{id}')
     print("get response -", res.json())
