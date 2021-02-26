@@ -26,13 +26,11 @@ try:
     print("DB response -", user_name)
 except IndexError as ie:
     print("No such id", ie)
-    return {'status': 'error', 'reason': 'no such id'}, 500
 except pymysql.err.IntegrityError as ie:
     print("Duplicate entry for PRIMARY key",ie)        
-    return {'status': 'error', 'reason': 'id already exists'}, 500
 except ( RuntimeError, pymysql.err.OperationalError ) as oe:
     print("Can't connect to MySQL server", oe)
-    return {'status': 'error', 'reason': "Can't connect to MySQL server"}, 500
+    raise Exception(oe)
 except Exception as e:
     print("test failed",e)
     raise Exception(e)
