@@ -12,18 +12,15 @@ stages {
     stage('rest app') {
         steps {
             /* bat 'pip install -r requirements.txt' */
-			timeout(time: 1, unit: 'MINUTES'){
-            bat 'start /min python rest_app.py'
-			}
+		
+				bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
+				bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}'
+				bat 'start /min python rest_app.py'
         }
     }
     stage('testing backend') {
         steps {
-			timeout(time: 5, unit: 'MINUTES'){
 				bat 'python backend_testing.py'
-				bat 'echo IMAGE_TAG=${BUILD_NUMBER}'
-				bat 'echo IMAGE_TAG=${env.BUILD_NUMBER}'
-			}
         }
     }
     stage('clean environment') {
